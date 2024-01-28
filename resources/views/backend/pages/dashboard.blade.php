@@ -21,7 +21,11 @@
                                 </div>
                             </div>
                             <div class="block-content block-content-full block-content-sm bg-body-light font-size-sm">
-                                <a class="font-w500 d-flex align-items-center" href="{{url('product/'.$products[$i]->id.'/purchase')}}">
+                                <a class="font-w500 d-flex align-items-center"
+                                   @if(auth()->user())
+                                        href="{{url('product/'.$products[$i]->id.'/purchase')}}"
+                                   @endif
+                                >
                                     Purchase
                                     <i class="fa fa-arrow-alt-circle-right ml-1 opacity-25 font-size-base"></i>
                                 </a>
