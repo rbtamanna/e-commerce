@@ -12,7 +12,7 @@ use App\Services\CategoryService;
 use App\Services\ProductService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
-use Maatwebsite\Excel\Excel;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
 {
@@ -92,9 +92,8 @@ class ProductController extends Controller
 
     public function export()
     {
-        $products = $this->productService->getAllProducts();
-        $filename = 'products.csv';
-        return Excel::download(new ProductExport($products), $filename);
+//        $products = $this->productService->getAllProducts();
+        return Excel::download(new ProductExport, 'products.xlsx');
     }
 
     public function delete($id)
