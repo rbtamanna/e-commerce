@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use Laravel\Socialite\Facades\Socialite;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +20,11 @@ use App\Http\Controllers\DashboardController;
 //Route::get('/', function () {
 //    return view('backend.pages.dashboard');
 //});
+
+
+Route::get('/auth/google', [AuthController::class, 'redirectToGoogle']);
+Route::get('/auth/google/callback', [AuthController::class, 'handleGoogleCallback']);
+
 Route::get('/', [DashboardController::class, 'index']);
 Route::get('login', [AuthController::class, 'index'])->name('viewLogin');
 Route::post('login', [AuthController::class, 'authenticate']);

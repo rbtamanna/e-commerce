@@ -22,7 +22,8 @@
         <!-- User Dropdown -->
         @if(!auth()->user())
             <span><a href="{{url('login')}}">Login<i class="fa fa-fw fa-sign-in-alt mr-1" ></i></a>
-            <a href="{{url('register')}}">Register<i class="fa fa-fw fa-plus mr-1" ></i></a></span>
+            <a href="{{url('register')}}">Register<i class="fa fa-fw fa-plus mr-1" ></i></a>
+            <a href="{{ url('/auth/google') }}">Google Login<i class="fab fa-fw fa-google mr-1" ></i></a></span>
         @endif
         @if(auth()->user())
         <div class="dropdown d-inline-block ml-2">

@@ -18,7 +18,7 @@
 @section('content')
     <div class="content ">
         @include('backend.layouts.error_msg')
-        <div class="block block-rounded col-sm-6 ">
+        <div class="block block-rounded block-content col-sm-6 ">
             <div class="block-header">
                 <h3 class="block-title">Add Product</h3>
             </div>
@@ -27,7 +27,7 @@
                 <div class="block block-rounded">
                     <div class="block-content block-content-full">
                         <div class="row items-push">
-                            <div class="col-lg-6 col-xl-6">
+                            <div class="col-lg-12 col-xl-12">
                                 <div class="form-group">
                                     <label for="val-username">Name <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control input-prevent-multiple-submission" id="name" name="name" value="{{ old('name') }}"  placeholder="Enter a name.." required>
@@ -55,7 +55,7 @@
 
                         <!-- Submit -->
                         <div class="row items-push">
-                            <div class="col-lg-7 offset-lg-4">
+                            <div class="col-lg-7 offset-lg-5">
                                 <button type="submit" class="btn btn-alt-primary button-prevent-multiple-submission" id="submit">
                                     <i class="spinner fa fa-spinner fa-spin"></i>Submit
                                 </button>

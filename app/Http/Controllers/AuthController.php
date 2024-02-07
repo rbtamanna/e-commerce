@@ -7,6 +7,7 @@ use App\Http\Requests\RegisterRequest;
 use App\Services\AuthService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Laravel\Socialite\Facades\Socialite;
 
 
 class AuthController extends Controller
@@ -46,7 +47,7 @@ class AuthController extends Controller
     {
         try {
             $response = $this->authService->authenticate($request->validated());
-            if ($response === true) {
+            if ($response) {
                 return redirect('/');
             } else {
                 return redirect()->back()->with('error', $response);
@@ -140,6 +141,25 @@ class AuthController extends Controller
                 return redirect()->back()->with('error', 'Sorry! password not updated!');
             }
             return redirect()->back()->with('error', 'All fields are required.');
+        } catch (\Exception $exception) {
+            return redirect()->back()->with('error', $exception->getMessage());
+        }
+    }
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function handleGoogleCallback()
+    {
+        $user = Socialite::driver('google')->user();
+        try {
+            $response = $this->authService->googleLogin($user);
+            if ($response) {
+                return redirect('/');
+            } else {
+                return redirect()->back()->with('error', $response);
+            }
         } catch (\Exception $exception) {
             return redirect()->back()->with('error', $exception->getMessage());
         }

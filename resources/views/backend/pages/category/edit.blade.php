@@ -12,7 +12,7 @@
 @section('content')
     <div class="content">
         @include('backend.layouts.error_msg')
-        <div class="block block-rounded col-sm-6">
+        <div class="block block-rounded block-content col-sm-6">
             <div class="block-header">
                 <h3 class="block-title">Edit Category</h3>
             </div>
@@ -21,7 +21,7 @@
                 <div class="block block-rounded">
                     <div class="block-content block-content-full">
                         <div class="row items-push">
-                            <div class="col-lg-8 col-xl-5">
+                            <div class="col-lg-12 col-xl-12">
                                 <div class="form-group">
                                     <label for="val-username">Name <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" id="name" name="name" value="{{ $category->name }}" placeholder="Enter a name.." >
@@ -33,7 +33,7 @@
 
                         <!-- Submit -->
                         <div class="row items-push">
-                            <div class="col-lg-7 offset-lg-4">
+                            <div class="col-lg-12 offset-lg-12">
                                 <button type="submit" class="btn btn-alt-primary">Update</button>
                             </div>
                         </div>

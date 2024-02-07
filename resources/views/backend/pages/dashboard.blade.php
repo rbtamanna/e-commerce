@@ -14,6 +14,7 @@
                                                                         {{$products[$i]->name}}
                                     </dt>
                                     <dd class="text-muted mb-0">{{$products[$i]->category_name}}</dd>
+                                    <dd class="text-muted mb-0">Quantity: {{$products[$i]->quantity}}</dd>
                                     <dd class="text-muted mb-0"> ${{$products[$i]->price}}</dd>
                                 </dl>
                                 <div class="item item-rounded bg-body">
@@ -22,7 +23,7 @@
                             </div>
                             <div class="block-content block-content-full block-content-sm bg-body-light font-size-sm">
                                 <a class="font-w500 d-flex align-items-center"
-                                   @if(auth()->user())
+                                   @if(auth()->user() && $products[$i]->quantity>0)
                                         href="{{url('product/'.$products[$i]->id.'/purchase')}}"
                                    @endif
                                 >

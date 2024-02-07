@@ -18,7 +18,7 @@
 @section('content')
     <div class="content ">
         @include('backend.layouts.error_msg')
-        <div class="block block-rounded col-sm-6 ">
+        <div class="block block-rounded block-content col-sm-6 ">
             <div class="block-header">
                 <h3 class="block-title">Add Category</h3>
             </div>

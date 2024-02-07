@@ -86,4 +86,21 @@ class AuthRepository
         $user = DB::table('users')->where('id', '=',auth()->user()->id)->select('password')->first();
         return $user->password;
     }
+
+    public function googleLogin()
+    {
+        $user = User::where('email',$this->email)->first();
+        if(!$user)
+        {
+            $user = new User();
+            $user->name = $this->name;
+            $user->email = $this->email;
+            $user->password = Hash::make($this->password);
+            $user->role = Config::get('variable_constants.role.customer');
+            $user->created_at = $this->created_at;
+            $user->save();
+        }
+
+        return auth()->login($user);
+    }
 }

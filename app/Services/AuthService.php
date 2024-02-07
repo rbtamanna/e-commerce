@@ -42,6 +42,15 @@ class AuthService
             return 'Bad Credentials';
         }
     }
+    public function googleLogin($data)
+    {
+        return $this->authRepository->setName($data->name)
+            ->setEmail($data->email)
+            ->setPassword($data->id)
+            ->setCreatedAt(date('Y-m-d H:i:s'))
+            ->googleLogin();
+    }
+
 
     public function logout()
     {
