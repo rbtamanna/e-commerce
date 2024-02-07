@@ -18,10 +18,21 @@ class DashboardController extends Controller
         View::share('main_menu', 'Dashboard');
         View::share('sub_menu', 'Dashboard');
     }
-    public function index()
+    public function index(Request $request)
     {
         $products = $this->dashboardService->getAllProducts();
-        return \view('backend.pages.dashboard', compact('products'));
+        $url = $request->fullUrl();
+        $shareComponent = \Share::page(
+            $url,
+            'Checkout My ecommerce website'
+        )
+            ->facebook()
+            ->twitter()
+            ->linkedin()
+            ->telegram()
+            ->whatsapp()
+            ->reddit();
+        return \view('backend.pages.dashboard', compact('products','shareComponent'));
     }
 
     public function purchase($id)

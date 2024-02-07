@@ -1,7 +1,31 @@
 @extends('backend.layouts.master')
+@section('css_after')
+    <style >
+        div#social-links {
+            /*margin: 0 auto;*/
+            /*max-width: 500px;*/
+        }
+        div#social-links ul li {
+            display: inline-block;
+        }
+        div#social-links ul li a {
+            padding: 5px;
+            /*border: 1px solid #ccc;*/
+            margin: 2px;
+            /*font-size: 30px;*/
+            /*color: #222;*/
+            /*background-color: #ccc;*/
+        }
 
+    </style>
+@endsection
 @section('content')
     <div class="content">
+        <div class="row row-deck">
+            <h3>Share This Page On</h3>
+            {!! $shareComponent !!}
+
+        </div>
         @for($i=0; $i<count($products); )
             <div class="row row-deck">
             @for($j=1; $j<=4 && $i<count($products); $i+=1, $j+=1)
